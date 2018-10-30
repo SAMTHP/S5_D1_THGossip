@@ -1,0 +1,24 @@
+<h1 class="modal-body">Acceuil</h1>
+<p class="form-control"><strong>Bienvenue à The Gossip Project</strong></p>
+
+<div class="breadcrumb">
+	<form action="/" method="post">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		Ton prénom :
+		<input type="text" name="first_name"><br><br>
+		Ton nom :
+		<input type="text" name="last_name"><br><br>
+		<input class="btn-primary " type="submit" name="send">
+	</form>
+</div>
+<br>
+<p class="form-control"><strong>Liste des Gossips</strong></p>
+
+<div class="row">
+		<% @all_gossips.each do |gossip| %>
+		<div class="card border-primary col-3" style="max-width: 23rem;">
+		<p class="card-header"><%= link_to "#{gossip.user.first_name}", "/#{gossip.id}" %></p>
+		<p class="card-title"><%= gossip.content %></p>
+	</div>
+		<% end %>
+</div>
